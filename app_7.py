@@ -27,12 +27,12 @@ def multiselect_filter(relatorio, col, selecionados):
 
 def main():
     st.set_page_config(page_title='Telemarketing analysis',
-                       page_icon='D:\\EBAC\\CIENCIA DE DADOS\\19\\Nova pasta\\img\\telmarketing_icon.png',
+                       page_icon='telmarketing_icon.png',
                        layout="wide",
                        initial_sidebar_state='expanded')
     st.write('# Telemarketing analysis')
     st.markdown("---")    
-    image = Image.open("D:\\EBAC\\CIENCIA DE DADOS\\19\\Nova pasta\\img\\Bank-Branding.jpg")
+    image = Image.open("Bank-Branding.jpg")
     st.sidebar.image(image)
     st.sidebar.write("## Upload File")
     data_file_1 = st.sidebar.file_uploader("Bank marketing data", type=['csv', 'xlsx'])
