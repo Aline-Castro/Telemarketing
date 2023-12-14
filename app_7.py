@@ -122,7 +122,7 @@ def main():
         bank_raw_target_pct.columns = ['y', 'proportion']
         bank_target_pct = bank['y'].value_counts(normalize=True).reset_index()
         bank_target_pct.columns = ['y', 'proportion']
-
+        
         fig, axes = plt.subplots(nrows=1, ncols=2, figsize=(12, 4))
         if graph_type == "Barras":
             sns.barplot(
@@ -130,6 +130,7 @@ def main():
                 y="proportion",
                 data=bank_raw_target_pct,
                 ax=axes[0],
+                palette="Blues"  # Adicionado parâmetro de paleta
             )
             axes[0].bar_label(container=axes[0].containers[0])
             axes[0].set_title(label="Dados brutos", fontweight="bold")
@@ -138,15 +139,16 @@ def main():
                 y="proportion",
                 data=bank_target_pct,
                 ax=axes[1],
+                palette="Reds"  # Adicionado parâmetro de paleta
             )
             axes[1].bar_label(container=axes[1].containers[0])
             axes[1].set_title(label="Dados filtrados", fontweight="bold")
         else:
             bank_raw_target_pct.plot(
-                kind="pie", autopct="%.2f", y="proportion", ax=axes[0]
+                kind="pie", autopct="%.2f", y="proportion", ax=axes[0], colors=["#1f77b4", "#ff7f0e"]  # Adicionado parâmetro de cores
             )
             axes[0].set_title("Dados brutos", fontweight="bold")
-            bank_target_pct.plot(kind="pie", autopct="%.2f", y="proportion", ax=axes[1])
+            bank_target_pct.plot(kind="pie", autopct="%.2f", y="proportion", ax=axes[1], colors=["#2ca02c", "#d62728"])  # Adicionado parâmetro de cores
             axes[1].set_title("Dados filtrados", fontweight="bold")
         st.write("## Proporção de aceite")
         st.pyplot(plt)
